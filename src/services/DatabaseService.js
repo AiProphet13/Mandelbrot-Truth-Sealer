@@ -115,5 +115,17 @@ export default class DatabaseService {
       request.onerror = () => reject(request.error);
     });
   }
-}
 
+  // Blockchain export added in v5.0
+  static async exportToBlockchain(archive) {
+    try {
+      // Placeholder for actual blockchain integration
+      const ipfsHash = await ipfs.add(JSON.stringify(archive));
+      const tx = await contract.sealTruth(ipfsHash, archive.quantumSeal.checksum);
+      return { ipfsHash, txHash: tx.hash, block: tx.blockNumber };
+    } catch (error) {
+      console.error('Blockchain export failed:', error);
+      throw error;
+    }
+  }
+}
