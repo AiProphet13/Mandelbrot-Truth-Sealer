@@ -17,4 +17,3 @@ export function stemWord(word) {
   }
   return stemmed;
 }
-
