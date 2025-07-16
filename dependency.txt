@@ -8,3 +8,12 @@
     "homomorphic-encryption-library": "^2.3.1"
   }
 }
+
+
+5. Implementation Notes
+    1.Blockchain/IPFS: Requires Ethereum provider setup and IPFS node configuration
+    2.Zero-Knowledge Proofs: Needs ZoKrates circuit definition file (truth_verification.code)
+    3.Homomorphic Encryption: Ensure browser compatibility with crypto libraries
+    4.Worker Pattern: Update WorkerManager to use the new sealer.worker.js
+    5.System Protection: Add confirmation dialog component
+
