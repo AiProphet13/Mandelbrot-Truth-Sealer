@@ -29,3 +29,15 @@ npx tailwindcss init -p
     4.Worker Pattern: Update WorkerManager to use the new sealer.worker.js
     5.System Protection: Add confirmation dialog component
 
+
+## on stemmer.js
+Then, any component that needs to use 
+the stemmer function can import it with:
+import { stemWord } from './utils/stemmer';
+The stemmer.js file will be needed for the 
+lie detection functionality, as the detectLies 
+function in lieDetector.js uses the stemWord 
+function to normalize words before comparing 
+them against the antonym dictionary.
+
+
