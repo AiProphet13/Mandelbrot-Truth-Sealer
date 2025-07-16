@@ -35,3 +35,4 @@ class WorkerHandler {
 
 const handler = new WorkerHandler();
 self.onmessage = (e) => handler.handleMessage(e);
+
