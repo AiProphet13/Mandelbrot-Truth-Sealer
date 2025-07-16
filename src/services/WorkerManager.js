@@ -20,7 +20,20 @@ class WorkerManager {
     };
   }
 
-  // ... rest of WorkerManager methods remain the same
+  async postMessage(action, payload) {
+    return new Promise((resolve) => {
+      const id = this.messageId++;
+      this.pendingMessages.set(id, resolve);
+      this.worker.postMessage({ action, payload, id });
+    });
+  }
+
+  terminate() {
+    if (this.worker) {
+      this.worker.terminate();
+      this.worker = null;
+    }
+  }
 }
 
 export default WorkerManager;
