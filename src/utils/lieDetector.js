@@ -20,7 +20,46 @@ export const ANTONYMS = {
 };
 
 export function detectLies(statements) {
-  // ... existing implementation with enhanced pattern matching
-  // Add stemming to word comparisons for better matches
-  // Consider partial matches and synonyms
+  const results = [];
+  let totalLieScore = 0;
+  let conflictCount = 0;
+
+  for (let i = 0; i < statements.length; i++) {
+    for (let j = i + 1; j < statements.length; j++) {
+      const A = statements[i].toLowerCase();
+      const B = statements[j].toLowerCase();
+
+      let hasConflict = false;
+      let conflictDetails = [];
+
+      for (const [word, antonyms] of Object.entries(ANTONYMS)) {
+        if (A.includes(word)) {
+          const hits = antonyms.filter(ant => B.includes(ant));
+          if (hits.length > 0) {
+            hasConflict = true;
+            conflictDetails.push({ word, antonyms: hits });
+          }
+        }
+      }
+
+      if (hasConflict) {
+        const lieScore = Math.min(0.99, 0.7 + conflictDetails.length * 0.1);
+        results.push({
+          indexA: i,
+          indexB: j,
+          statementA: statements[i],
+          statementB: statements[j],
+          lieScore,
+          conflicts: conflictDetails
+        });
+        totalLieScore += lieScore;
+        conflictCount++;
+      }
+    }
+  }
+
+  return {
+    conflicts: results,
+    overallLieScore: conflictCount ? totalLieScore / conflictCount : 0
+  };
 }
