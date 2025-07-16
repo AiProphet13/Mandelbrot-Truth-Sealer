@@ -1,0 +1,31 @@
+{
+  "name": "mandelbrot-truth-sealer",
+  "version": "5.0.0",
+  "description": "Cryptographically-sealed truth preservation system",
+  "license": "MIT",
+  "author": "AiProphet13",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AiProphet13/mandelbrot-truth-sealer.git"
+  },
+  "keywords": [
+    "truth",
+    "lie-detection",
+    "blockchain",
+    "encryption",
+    "react",
+    "open-source"
+  ],
+  "bugs": {
+    "url": "https://github.com/AiProphet13/mandelbrot-truth-sealer/issues"
+  },
+  "homepage": "https://github.com/AiProphet13/mandelbrot-truth-sealer#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.263.1",
+    "ipfs-core": "^0.18.0",
+    "zokrates-js": "^1.0.0",
+    "homomorphic-encryption-library": "^2.3.1"
+  }
+}
